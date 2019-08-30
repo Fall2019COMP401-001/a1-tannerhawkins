@@ -11,15 +11,12 @@ public class A1Adept {
 		// Your code follows here.
 		int itemcount = scan.nextInt();
 		String[] items = new String[itemcount];
-		String[] itemprices = new String[itemcount];
+		Float[] itemprices = new Float[itemcount];
 		int itemcounter = 0;
 		int customercounter = 0;
-		scan.nextLine();
 		for(int i=itemcount; Math.abs(i)>0.1; i--) {
-			String itemnameprice = scan.nextLine();
-			String[] temp = itemnameprice.split(" ");
-			items[itemcounter] = temp[0];
-			itemprices[itemcounter] = temp[1];
+			items[itemcounter] = scan.next();
+			itemprices[itemcounter] = scan.nextFloat();
 			itemcounter += 1;
 		}
 
@@ -40,7 +37,7 @@ public class A1Adept {
 				String item = scan.next();
 				for(int z = itemcount; z>0; z--) {					
 						if(item.equals(items[z-1])) {
-							float itemprice = Float.parseFloat(itemprices[z-1]);
+							float itemprice = itemprices[z-1];
 							for(int y = amount; y>0; y--) {
 								customertotal += itemprice;
 							}
@@ -64,13 +61,11 @@ public class A1Adept {
 			customercounter += 1;
 		}
 		float average = runningtotal / customercount;
-		System.out.printf("Biggest: " + customernames[largesttotalindex] + " (" + "%.2f", largesttotal);
-		System.out.print(")");
-		System.out.println();
-		System.out.printf("Smallest: " + customernames[smallesttotalindex] + " (" + "%.2f", smallesttotal);
-		System.out.print(")");
-		System.out.println();
-		System.out.printf("Average: " + "%.2f", average);
-		
+		String largetotal = String.format ("%.2f", largesttotal);
+		String smalltotal = String.format ("%.2f", smallesttotal);
+		String average1 = String.format ("%.2f", average);
+		System.out.println("Biggest: " + customernames[largesttotalindex] + " (" + largetotal + ")");
+		System.out.println("Smallest: " + customernames[smallesttotalindex] + " (" + smalltotal + ")");
+		System.out.println("Average: " + average1);
 	}
 }
